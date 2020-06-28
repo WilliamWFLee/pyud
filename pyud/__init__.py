@@ -10,3 +10,4 @@ A simple wrapper for the Urban Dictionary API
 """
 
 from .definition import Definition
+from .client import AsyncClient, Client

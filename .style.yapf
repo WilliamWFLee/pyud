@@ -1,2 +1,2 @@
 [style]
-dedent_closing_brackets = false
+dedent_closing_brackets = true
