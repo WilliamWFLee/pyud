@@ -7,6 +7,7 @@ pyud.definition
 :license: GNU GPL v3.0, see LICENSE
 """
 
+import json
 from datetime import datetime as dt
 from typing import Any, Dict, Union
 
@@ -63,3 +64,22 @@ class Definition:
         # Excess attributes are added
         for name, value in attrs.items():
             setattr(self, name, value)
+
+    @classmethod
+    def from_json(cls, data: Union[str, bytes, bytearray]):
+        """Returns an instance of Definition from JSON
+
+        :param data: The definition in JSON format
+        :type data: Union[str, bytes, bytearray]
+        """
+        try:
+            dictionary = json.loads(data)
+        except json.JSONDecodeError:
+            raise Exception(
+                "JSON was not given in the correct format") from None
+
+        try:
+            return cls(**dictionary)
+        except TypeError:
+            raise Exception(
+                "1 or more expected valeus are missing") from None
