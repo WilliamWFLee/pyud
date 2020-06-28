@@ -94,7 +94,7 @@ class Client(ClientBase):
         :rtype: List[Definition]
         """
         definitions = self._fetch_definitions(RANDOM_URL)
-        
+
         return definitions[:limit]
 
 
@@ -113,3 +113,13 @@ class AsyncClient(ClientBase):
         Finds definitions for a given term
         """
         return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
+
+    async def from_id(self, defid: int) -> Optional[Definition]:
+        """
+        Finds a definition by ID
+        """
+        definitions = await self._fetch_definitions(
+            DEFINE_BY_ID_URL.format(defid)
+        )
+
+        return definitions[0] if definitions else None
