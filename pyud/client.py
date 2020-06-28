@@ -71,3 +71,15 @@ class Client(ClientBase):
         :rtype: Optional[List[Definition]]
         """
         return self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
+
+    def from_id(self, defid: int) -> Optional[Definition]:
+        """Finds a definition by ID
+
+        :param defid: The ID of the definition
+        :type defid: int
+        :return: The definition or `None` if no definition is found
+        :rtype: Optional[List[Definition]]
+        """
+        definitions = self._fetch_definitions(DEFINE_BY_ID_URL.format(defid))
+
+        return definitions[0] if definitions else None
