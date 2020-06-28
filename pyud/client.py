@@ -70,12 +70,16 @@ class Client(ClientBase):
     def define(self, term: str) -> Optional[List[Definition]]:
         """
         Finds definitions for a given term
+
+        Returns `None` if no definition is found
         """
         return self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
 
     def from_id(self, defid: int) -> Optional[Definition]:
         """
         Finds a definition by ID
+
+        Returns `None` if no definition is found
         """
         definitions = self._fetch_definitions(DEFINE_BY_ID_URL.format(defid))
 
@@ -83,7 +87,9 @@ class Client(ClientBase):
 
     def random(self, *, limit: int = 10) -> List[Definition]:
         """
-        Returns a random list of definitions
+        Returns a random list of definitions,
+        up to the limit of 10 definitions,
+        which is the number of definitions returned from the API
         """
         definitions = self._fetch_definitions(RANDOM_URL)
 
@@ -105,12 +111,16 @@ class AsyncClient(ClientBase):
     async def define(self, term: str) -> Optional[List[Definition]]:
         """
         Finds definitions for a given term
+
+        Returns `None` if no definitions are found
         """
         return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
 
     async def from_id(self, defid: int) -> Optional[Definition]:
         """
         Finds a definition by ID
+
+        Returns `None` if no definition is found
         """
         definitions = await self._fetch_definitions(
             DEFINE_BY_ID_URL.format(defid)
@@ -120,7 +130,9 @@ class AsyncClient(ClientBase):
 
     async def random(self, *, limit: int = 10) -> List[Definition]:
         """
-        Returns a random list of definitions
+        Returns a random list of definitions,
+        up to the limit of 10 definitions,
+        which is the number of definitions returned from the API
         """
         definitions = await self._fetch_definitions(RANDOM_URL)
 
