@@ -13,7 +13,9 @@ from typing import Any, Dict, List, Union
 
 
 class Definition:
-    """Represents an Urban Dictionary definition"""
+    """
+    Represents an Urban Dictionary definition
+    """
     def __init__(
         self,
         *,
@@ -29,26 +31,19 @@ class Definition:
         written_on: str,
         **attrs: Dict[str, Any],
     ):
-        """Instantiates an instance of an Urban Dictionary definition
+        """
+        Instantiates an instance of an Urban Dictionary definition
 
-        :param defid: The ID of the definition
-        :type defid: int
-        :param word: The word that is being defined
-        :type word: str
-        :param definition: The definition description
-        :type definition: str
-        :param author: The author of the description
-        :type author: str
-        :param thumbs_up: The number of thumbs-up given to the definition
-        :type thumbs_up: int
-        :param thumbs_down: The number of thumbs-down given to the definition
-        :type thumbs_down: int
-        :param example: An example usage of the definition
-        :type example: str
-        :param permalink: The permalink for the definition
-        :type permalink: str
-        :param written_on: The date and time the definition was written as RFC 3339
-        :type written_on: str
+        This is usually done by using either one of `Client` or `AsyncClient`,
+        and using one of the defined API wrapper methods/coroutines
+        to retrieve definitions from the API.
+
+        All of the fields in each of the definition objects
+        returned from the API are required attributes on the class instance,
+        except for `current_vote`, which is currently only an empty string.
+
+        Attributes other than those required are added to the instance, 
+        but they are not processed and are provided as is.
         """
         self.defid = defid
         self.word = word
