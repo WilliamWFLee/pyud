@@ -59,8 +59,8 @@ class Definition:
         self.permalink = permalink
 
         # Parses the RFC 3339 timestring to a naive datetime object
-        self.written_on = dt.strptime("%Y-%m-%dT%H:%M:%S.%fZ")
+        self.written_on = dt.strptime(written_on, "%Y-%m-%dT%H:%M:%S.%fZ")
 
         # Excess attributes are added
-        for name, value in attrs.items:
+        for name, value in attrs.items():
             setattr(self, name, value)
