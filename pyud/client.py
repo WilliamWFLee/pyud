@@ -123,3 +123,11 @@ class AsyncClient(ClientBase):
         )
 
         return definitions[0] if definitions else None
+
+    async def random(self, *, limit: int = 10) -> List[Definition]:
+        """
+        Returns a random list of definitions
+        """
+        definitions = await self._fetch_definitions(RANDOM_URL)
+
+        return definitions[:limit]
