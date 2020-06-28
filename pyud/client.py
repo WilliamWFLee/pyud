@@ -107,3 +107,9 @@ class AsyncClient(ClientBase):
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
                 return self._from_json(response.text())
+
+    async def define(self, term: str) -> Optional[List[Definition]]:
+        """
+        Finds definitions for a given term
+        """
+        return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
