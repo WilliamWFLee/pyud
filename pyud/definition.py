@@ -48,7 +48,6 @@ class Definition:
         :param written_on: The date and time the definition was written as RFC 3339
         :type written_on: str
         """
-
         self.defid = defid
         self.word = word
         self.definition = definition
@@ -72,7 +71,6 @@ class Definition:
         :param dictionary: A dictionary containing informaton about the definition
         :type dictionary: dict
         """
-
         try:
             return cls(**dictionary)
         except TypeError:
