@@ -9,6 +9,7 @@ pyud.client
 
 import json
 from typing import List, Optional, Union
+from urllib import request
 
 from .definition import Definition
 
@@ -52,3 +53,21 @@ class ClientBase:
                 pass
 
         return definitions if definitions else None
+
+
+class Client(ClientBase):
+    """Synchronous client for the Urban Dictionary API"""
+    def _fetch_definitions(self, url: str) -> Optional[List[Definition]]:
+        """Fetch definitions from the API url given"""
+        with request.urlopen(url) as response:
+            return self._from_json(response.read().decode('utf-8'))
+
+    def define(self, term: str) -> Optional[List[Definition]]:
+        """Finds definitions for a given term
+
+        :param url: The API URL
+        :type url: str
+        :return: A list of Definitions or `None` for no definitions
+        :rtype: Optional[List[Definition]]
+        """
+        return self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
