@@ -106,7 +106,7 @@ class AsyncClient(ClientBase):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
-                return self._from_json(response.text())
+                return self._from_json(await response.text())
 
     async def define(self, term: str) -> Optional[List[Definition]]:
         """
