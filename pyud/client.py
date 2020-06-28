@@ -83,3 +83,15 @@ class Client(ClientBase):
         definitions = self._fetch_definitions(DEFINE_BY_ID_URL.format(defid))
 
         return definitions[0] if definitions else None
+
+    def random(self, *, limit: int = 10) -> List[Definition]:
+        """Returns a random list of definitions
+
+        :param limit: The number of definitions to return. Defaults to 10, must be at most 10
+        :type limit: int, optional
+        :return: A list of definitions
+        :rtype: List[Definition]
+        """
+        definitions = self._fetch_definitions(RANDOM_URL)
+        
+        return definitions[:limit]
