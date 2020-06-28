@@ -25,7 +25,7 @@ class Definition:
         example: str,
         permalink: str,
         written_on: str,
-        **attrs: Dict[Any],
+        **attrs: Dict[str, Any],
     ):
         """Instantiates an instance of an Urban Dictionary definition
 
