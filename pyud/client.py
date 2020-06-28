@@ -95,3 +95,8 @@ class Client(ClientBase):
         definitions = self._fetch_definitions(RANDOM_URL)
         
         return definitions[:limit]
+
+
+class AsyncClient(ClientBase):
+    """Asynchronous client for the Urban Dictionary API"""
+    pass
