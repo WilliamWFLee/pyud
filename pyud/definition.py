@@ -9,7 +9,7 @@ pyud.definition
 
 import json
 from datetime import datetime as dt
-from typing import Any, Dict, Union
+from typing import Any, Dict, List, Union
 
 
 class Definition:
