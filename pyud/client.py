@@ -12,6 +12,7 @@ from typing import List, Optional, Union
 from urllib import request
 
 from .definition import Definition
+import aiohttp
 
 BASE_URL = "https://api.urbandictionary.com/v0/"
 DEFINE_BY_TERM_URL = BASE_URL + "define?term={}"
@@ -99,4 +100,10 @@ class Client(ClientBase):
 
 class AsyncClient(ClientBase):
     """Asynchronous client for the Urban Dictionary API"""
-    pass
+    async def _fetch_definitions(self, url: str) -> Optional[List[Definition]]:
+        """
+        Fetch definitions from the API url given
+        """
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                return self._from_json(response.text())
