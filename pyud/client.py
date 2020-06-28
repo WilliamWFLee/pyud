@@ -8,6 +8,7 @@ pyud.client
 """
 
 import json
+from typing import List, Optional, Union
 
 from .definition import Definition
 
@@ -19,4 +20,35 @@ RANDOM_URL = BASE_URL + "random"
 
 class ClientBase:
     """Base class for the Client and AsyncClient"""
-    pass
+    def _from_json(
+        self, data: Union[str, bytes, bytearray]
+    ) -> Optional[List[Definition]]:
+        """Returns a list of Definitions from JSON
+
+        The format of the JSON is a single array of definition objects
+        under the key 'list' in the JSON document
+
+        :param data: The definitions in JSON format
+        :type data: Union[str, bytes, bytearray]
+        """
+
+        try:
+            parsed_data = json.loads(data, strict=False)
+        except json.JSONDecodeError:
+            raise Exception(
+                "JSON was not given in the correct format"
+            ) from None
+
+        if 'list' not in parsed_data or not parsed_data['list']:
+            return
+
+        definitions_list = parsed_data['list']
+        definitions = []
+
+        for dictionary in definitions_list:
+            try:
+                definitions += [Definition(**dictionary)]
+            except TypeError:
+                pass
+
+        return definitions if definitions else None
