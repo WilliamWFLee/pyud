@@ -13,7 +13,9 @@ from typing import Any, Dict, Union
 
 
 class Definition:
-    """Represents an Urban Dictionary definition"""
+    """
+    Represents an Urban Dictionary definition
+    """
     def __init__(
         self,
         *,
