@@ -8,7 +8,7 @@ pyud.definition
 """
 
 from datetime import datetime as dt
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 
 class Definition:
@@ -63,16 +63,3 @@ class Definition:
         # Excess attributes are added
         for name, value in attrs.items():
             setattr(self, name, value)
-
-    @classmethod
-    def from_dict(cls, dictionary: dict):
-        """Returns an instance of Definition from the dictionary given
-
-        :param dictionary: A dictionary containing informaton about the definition
-        :type dictionary: dict
-        """
-        try:
-            return cls(**dictionary)
-        except TypeError:
-            raise Exception(
-                "1 or more fields are missing from the dictionary") from None
