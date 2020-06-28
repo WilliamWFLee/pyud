@@ -7,7 +7,7 @@ Features
 --------
 
 - Synchronous and asynchronous clients for the API
-- Definition objects for object-style access to definition attributes, and include all fields
+- Definition objects for object-style access to definition attributes, and includes all fields
 - Full coverage of the known API
 
 Requirements
