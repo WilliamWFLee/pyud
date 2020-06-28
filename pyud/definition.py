@@ -30,6 +30,17 @@ class Definition:
     ):
         """
         Instantiates an instance of an Urban Dictionary definition
+
+        This is usually done by using either one of `Client` or `AsyncClient`,
+        and using one of the defined API wrapper methods/coroutines
+        to retrieve definitions from the API.
+
+        All of the fields in each of the definition objects
+        returned from the API are required attributes on the class instance,
+        except for `current_vote`, which is currently only an empty string.
+
+        Attributes other than those required are added to the instance, 
+        but they are not processed and are provided as is.
         """
         self.defid = defid
         self.word = word
