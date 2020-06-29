@@ -8,11 +8,10 @@ pyud
 
 pyud is a simple, easy-to-use API wrapper for Urban Dictionary
 
-
 Contents
 --------
 
 .. toctree::
    :maxdepth: 2
 
-   installation
+   introduction
