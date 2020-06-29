@@ -25,6 +25,13 @@ INCORRECT_DATES = (
     "2020-06-29",  # Date-only
 )
 
+EXTRA_ATTRIBUTES = {
+    "attribute1": 1,
+    "attribute2": 2,
+    "attribute3": "something",
+    "attribute4": "another thing",
+}
+
 
 def test_complete_definition():
     assert pyud.Definition(**DATA) is not None
@@ -46,3 +53,13 @@ def test_incorrect_date_format():
 
         with pytest.raises(ValueError):
             definition = pyud.Definition(**data)
+
+
+def test_excess_attributes():
+    data = DATA.copy()
+    data = dict(data, **EXTRA_ATTRIBUTES)
+
+    definition = pyud.Definition(**data)
+
+    for key, value in EXTRA_ATTRIBUTES.items():
+        assert getattr(definition, key) == value
