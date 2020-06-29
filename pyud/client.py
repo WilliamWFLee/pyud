@@ -65,7 +65,9 @@ class Client(ClientBase):
         Fetch definitions from the API url given
         """
         with request.urlopen(url) as response:
-            return self._parse_definitions_from_json(response.read().decode('utf-8'))
+            return self._parse_definitions_from_json(
+                response.read().decode('utf-8')
+            )
 
     def define(self, term: str) -> Optional[List[Definition]]:
         """
