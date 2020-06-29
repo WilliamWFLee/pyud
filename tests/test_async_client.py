@@ -8,6 +8,7 @@ import pyud
 def client():
     return pyud.AsyncClient()
 
+
 @pytest.mark.incremental
 class TestClient:
     @pytest.mark.asyncio
