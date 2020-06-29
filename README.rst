@@ -27,8 +27,8 @@ Synchronous Example
     import pyud
 
     ud = pyud.Client()
-    definition = ud.define("hello")
-    print(definition.word) # Outputs "hello"
+    definitions = ud.define("hello")
+    print(definitions[0].word) # Outputs "hello"
 
 Asynchronous Example
 ~~~~~~~~~~~~~~~~~~~~
@@ -42,8 +42,8 @@ Asynchronous Example
 
     async def example():
         ud = pyud.AsyncClient()
-        definition = await ud.define("hello")
-        print(definition.word) # Outputs "hello"
+        definitions = await ud.define("hello")
+        print(definitions[0].word) # Outputs "hello"
 
 
     async def main():
