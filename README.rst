@@ -13,7 +13,7 @@ Features
 Requirements
 ------------
 
-- **Python 3.5.3 or higher.** Python 2 is not supported.
+- **Python 3.5.3 or higher**. Python 2 is not supported.
 - `aiohttp <https://docs.aiohttp.org/en/stable/>`_, version 3.6.2
 
 Quick Examples
@@ -49,7 +49,7 @@ Asynchronous Example
     async def main():
         await example()
 
-    
+
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
 
