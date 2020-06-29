@@ -22,9 +22,9 @@ def test_complete_definition():
 
 
 def test_incomplete_definition():
-    # No defid
-    no_defid_data = DATA.copy()
-    del no_defid_data["defid"]
+    for key in DATA:
+        incomplete_data = DATA.copy()
+        del incomplete_data[key]
 
-    with pytest.raises(TypeError):
-        definition = pyud.Definition(**no_defid_data)
+        with pytest.raises(TypeError):
+            definition = pyud.Definition(**incomplete_data)
