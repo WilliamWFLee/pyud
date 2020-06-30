@@ -1,4 +1,4 @@
-div.admonition code.xref {
+div.admonition code.xref, a code.xref {
     background-color: unset;
     color: inherit;
     border-bottom: inherit;
