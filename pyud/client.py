@@ -157,6 +157,14 @@ class AsyncClient(ClientBase):
         :type defid: int
         :return: The definition corresponding to the ID or :const:`None` if not found
         :rtype: Optional[Definition]
+
+        .. note ::
+
+            See :meth:`Client.random` for note.
+
+        .. warning ::
+
+            See :meth:`Client.random` for warning.
         """
         definitions = await self._fetch_definitions(RANDOM_URL)
 
