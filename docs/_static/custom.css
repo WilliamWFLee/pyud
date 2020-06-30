@@ -1,0 +1,6 @@
+div.admonition code.xref {
+    background-color: unset;
+    color: inherit;
+    border-bottom: inherit;
+    font: inherit;
+}
