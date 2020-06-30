@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This documentation is for pyud, a simple library in Python for facilitating the access of the Urban Dictionary API.
+This documentation is for pyud, a simple library written in Python for facilitating the access of the `Urban Dictionary`_ API.
 
 Requirements
 ------------
@@ -22,3 +22,5 @@ On Windows this is:
 .. code:: bat
 
     py -3 -m pip install pyud
+
+.. _Urban Dictionary: https://urbandictionary.com
