@@ -151,12 +151,12 @@ class AsyncClient(ClientBase):
         return definitions[0] if definitions else None
 
     async def random(self, *, limit: int = 10) -> List[Definition]:
-        """Finds a definition by ID asynchronously
+        """Returns a random list of definitions
 
-        :param defid: The ID of the definition
-        :type defid: int
-        :return: The definition corresponding to the ID or :const:`None` if not found
-        :rtype: Optional[Definition]
+        :param limit: The number of definitions to return, defaults to 10
+        :type limit: int
+        :return: A list of definitions
+        :rtype: List[Definition]
 
         .. note ::
 
