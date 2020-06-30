@@ -12,9 +12,9 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
+import re
 
-from pyud import __version__
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
@@ -23,7 +23,14 @@ copyright = ' Copyright 2020 William Lee'
 author = 'William Lee'
 
 # The full version, including alpha/beta/rc tags
-release = __version__
+version = ''
+with open('../pyud/__init__.py') as f:
+    code = f.read()
+    version = re.search(
+        r'__version__\s*=\s*[\'"](?P<version>[^\'"]*)[\'"]', code, re.MULTILINE
+    ).group('version')
+
+release = version
 
 # -- General configuration ---------------------------------------------------
 
