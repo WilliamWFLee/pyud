@@ -14,6 +14,7 @@ Requirements
 ------------
 
 - **Python 3.6 or higher.** Python 2 is not supported.
+
 - `aiohttp <https://docs.aiohttp.org/en/stable/>`_, version 3.6.2
 
 Installing
@@ -42,8 +43,8 @@ Synchronous Example
     import pyud
 
     ud = pyud.Client()
-    definition = ud.define("hello")
-    print(definition.word) # Outputs "hello"
+    definitions = ud.define("hello")
+    print(definitions[0].word) # Outputs "hello"
 
 Asynchronous Example
 ~~~~~~~~~~~~~~~~~~~~
@@ -57,8 +58,8 @@ Asynchronous Example
 
     async def example():
         ud = pyud.AsyncClient()
-        definition = await ud.define("hello")
-        print(definition.word) # Outputs "hello"
+        definitions = await ud.define("hello")
+        print(definitions[0].word) # Outputs "hello"
 
 
     loop = asyncio.get_event_loop()

@@ -24,7 +24,7 @@ class ClientBase:
     """
     Base class for the Client and AsyncClient
     """
-    def _from_json(
+    def _parse_definitions_from_json(
         self, data: Union[str, bytes, bytearray]
     ) -> Optional[List[Definition]]:
         """
@@ -65,7 +65,9 @@ class Client(ClientBase):
         Fetch definitions from the API url given
         """
         with request.urlopen(url) as response:
-            return self._from_json(response.read().decode('utf-8'))
+            return self._parse_definitions_from_json(
+                response.read().decode('utf-8')
+            )
 
     def define(self, term: str) -> Optional[List[Definition]]:
         """Finds definitions for a given term
@@ -124,7 +126,7 @@ class AsyncClient(ClientBase):
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
-                return self._from_json(await response.text())
+                return self._parse_definitions_from_json(await response.text())
 
     async def define(self, term: str) -> Optional[List[Definition]]:
         """Finds definitions for a given term asynchronously

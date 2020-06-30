@@ -9,7 +9,7 @@ pyud.definition
 
 import json
 from datetime import datetime as dt
-from typing import Any, Union
+from typing import Any, List
 
 
 class Definition:
@@ -99,6 +99,7 @@ class Definition:
         thumbs_down: int,
         example: str,
         permalink: str,
+        sound_urls: List[str],
         written_on: str,
         **attrs: Any,
     ):
@@ -113,6 +114,7 @@ class Definition:
         self.thumbs_down = thumbs_down
         self.example = example
         self.permalink = permalink
+        self.sound_urls = sound_urls
 
         # Parses the RFC 3339 timestring to a naive datetime object
         self.written_on = dt.strptime(written_on, "%Y-%m-%dT%H:%M:%S.%fZ")
