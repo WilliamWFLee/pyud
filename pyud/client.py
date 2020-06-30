@@ -72,7 +72,7 @@ class Client(ClientBase):
 
         :param term: The term to find definitions for
         :type term: str
-        :return: A list of definitions or :const:`None` if not found
+        :return: A list of definitions or :data:`None` if not found
         :rtype: Optional[List[Definition]]
         """
         return self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
@@ -82,7 +82,7 @@ class Client(ClientBase):
 
         :param defid: The ID of the definition
         :type defid: int
-        :return: The definition corresponding to the ID or :const:`None` if not found
+        :return: The definition corresponding to the ID or :data:`None` if not found
         :rtype: Optional[Definition]
         """
         definitions = self._fetch_definitions(DEFINE_BY_ID_URL.format(defid))
@@ -131,7 +131,7 @@ class AsyncClient(ClientBase):
 
         :param term: The term to find definitions for
         :type term: str
-        :return: A list of definitions or :const:`None` if not found
+        :return: A list of definitions or :data:`None` if not found
         :rtype: Optional[List[Definition]]
         """
         return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
@@ -141,7 +141,7 @@ class AsyncClient(ClientBase):
 
         :param defid: The ID of the definition
         :type defid: int
-        :return: The definition corresponding to the ID or :const:`None` if not found
+        :return: The definition corresponding to the ID or :data:`None` if not found
         :rtype: Optional[Definition]
         """
         definitions = await self._fetch_definitions(
