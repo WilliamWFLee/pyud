@@ -15,9 +15,11 @@ AsyncClient
 -----------
 
 .. autoclass:: AsyncClient
+    :members:
 
 
 Definition
 ----------
 
 .. autoclass:: Definition
+    :members:
