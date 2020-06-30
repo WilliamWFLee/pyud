@@ -6,7 +6,7 @@ This documentation is for pyud, a simple library in Python for facilitating the 
 Requirements
 ------------
 
-pyud can be used in Python 3.5.3 or higher. Previous versions of Python 3, and all Python 2 versions, are not compatible.
+pyud can be used in Python 3.6 or higher. Previous versions of Python 3, and all Python 2 versions, are not supported.
 
 Installation
 ------------
