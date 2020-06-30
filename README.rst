@@ -16,6 +16,21 @@ Requirements
 - **Python 3.6 or higher.** Python 2 is not supported.
 - `aiohttp <https://docs.aiohttp.org/en/stable/>`_, version 3.6.2
 
+Installing
+----------
+
+You can install directly from PyPI:
+
+.. code:: sh
+
+    python3 -m pip install pyud
+
+On Windows this is:
+
+.. code:: bat
+
+    py -3 -m pip install pyud
+
 Quick Examples
 --------------
 
