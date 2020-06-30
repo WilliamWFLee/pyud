@@ -8,6 +8,8 @@ Requirements
 
 pyud can be used in Python 3.6 or higher. Previous versions of Python 3, and all Python 2 versions, are not supported.
 
+.. _installation:
+
 Installation
 ------------
 
