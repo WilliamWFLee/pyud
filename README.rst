@@ -64,6 +64,11 @@ Asynchronous Example
     loop = asyncio.get_event_loop()
     loop.run_until_complete(example())
 
+Documentation
+-------------
+
+`pyud Documentation <https://pyud.readthedocs.io/en/latest/>`_
+
 License
 -------
 
