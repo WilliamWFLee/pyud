@@ -127,18 +127,22 @@ class AsyncClient(ClientBase):
                 return self._from_json(await response.text())
 
     async def define(self, term: str) -> Optional[List[Definition]]:
-        """
-        Finds definitions for a given term
+        """Finds definitions for a given term asynchronously
 
-        Returns `None` if no definitions are found
+        :param term: The term to find definitions for
+        :type term: str
+        :return: A list of definitions or :const:`None` if not found
+        :rtype: Optional[List[Definition]]
         """
         return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
 
     async def from_id(self, defid: int) -> Optional[Definition]:
-        """
-        Finds a definition by ID
+        """Finds a definition by ID asynchronously
 
-        Returns `None` if no definition is found
+        :param defid: The ID of the definition
+        :type defid: int
+        :return: The definition corresponding to the ID or :const:`None` if not found
+        :rtype: Optional[Definition]
         """
         definitions = await self._fetch_definitions(
             DEFINE_BY_ID_URL.format(defid)
@@ -147,10 +151,12 @@ class AsyncClient(ClientBase):
         return definitions[0] if definitions else None
 
     async def random(self, *, limit: int = 10) -> List[Definition]:
-        """
-        Returns a random list of definitions,
-        up to the limit of 10 definitions,
-        which is the number of definitions returned from the API
+        """Finds a definition by ID asynchronously
+
+        :param defid: The ID of the definition
+        :type defid: int
+        :return: The definition corresponding to the ID or :const:`None` if not found
+        :rtype: Optional[Definition]
         """
         definitions = await self._fetch_definitions(RANDOM_URL)
 
