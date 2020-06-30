@@ -102,7 +102,7 @@ class Client(ClientBase):
             The Urban Dictionary API returns 10 random definitions at a time.
             Even if ``limit`` to set to an integer greater than 10,
             only 10 definitions will be returned.
-        
+
         .. warning::
 
             The above behaviour may change in a subsequent version,
