@@ -66,6 +66,10 @@ html_static_path = ['_static']
 
 html_show_sourcelink = False
 
+# -- Autodoc options ---------------------------------------------------------
+
+autodoc_typehints = 'none'
+
 # -- Intersphinx options -----------------------------------------------------
 
 intersphinx_mapping = {
