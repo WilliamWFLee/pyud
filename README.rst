@@ -46,12 +46,8 @@ Asynchronous Example
         print(definition.word) # Outputs "hello"
 
 
-    async def main():
-        await example()
-
-    
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    loop.run_until_complete(example())
 
 License
 -------
