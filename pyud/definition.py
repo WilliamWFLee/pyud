@@ -9,12 +9,84 @@ pyud.definition
 
 import json
 from datetime import datetime as dt
-from typing import Any, Dict, Union
+from typing import Any, Union
 
 
 class Definition:
     """
     Represents an Urban Dictionary definition
+
+    This class is not intended to be instantiated directly.
+    It is preferably obtained using either one
+    of :class:`Client` or :class:`AsyncClient`, and using one
+    of the defined API wrapper methods/coroutines to retrieve definitions
+    from the API.
+
+    .. note::
+
+        Any additional attributes that may be provided in the future by the API
+        are also added to the instance, but they are provided as is,
+        and are not processed in any way. Future versions may be support
+        any added attributes.
+
+    .. note::
+
+        The ``current_vote`` attribute is not included as a required attribute,
+        as it does not contain any meaningful information.
+
+    .. attribute:: defid
+
+        The ID of the definition
+
+        :type: int
+
+    .. attribute:: word
+
+        The term being defined
+
+        :type: str
+
+    .. attribute:: definition
+
+        The definition description
+
+        :type: str
+
+    .. attribute:: author
+
+        The author of the definition
+
+        :type: str
+
+    .. attribute:: thumbs_up
+
+        The number of upvotes on the definition
+
+        :type: int
+
+    .. attribute:: thumbs_down
+
+        The number of downvotes on the definition
+
+        :type: int
+
+    .. attribute:: example
+
+        An example usage of the term
+
+        :type: str
+
+    .. attribute:: permalink
+
+        A permalink to the definition
+
+        :type: str
+
+    .. attribute:: written_on
+
+        The date that the definition was written
+
+        :type: datetime.datetime
     """
     def __init__(
         self,
@@ -28,21 +100,10 @@ class Definition:
         example: str,
         permalink: str,
         written_on: str,
-        **attrs: Dict[str, Any],
+        **attrs: Any,
     ):
         """
         Instantiates an instance of an Urban Dictionary definition
-
-        This is usually done by using either one of `Client` or `AsyncClient`,
-        and using one of the defined API wrapper methods/coroutines
-        to retrieve definitions from the API.
-
-        All of the fields in each of the definition objects
-        returned from the API are required attributes on the class instance,
-        except for `current_vote`, which is currently only an empty string.
-
-        Attributes other than those required are added to the instance, 
-        but they are not processed and are provided as is.
         """
         self.defid = defid
         self.word = word
