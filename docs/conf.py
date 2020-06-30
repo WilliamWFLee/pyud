@@ -39,6 +39,7 @@ release = version
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -62,3 +63,9 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 html_show_sourcelink = False
+
+# -- Intersphinx options -----------------------------------------------------
+
+intersphinx_mapping = {
+    'python' : ("https://docs.python.org/3", None)
+}
