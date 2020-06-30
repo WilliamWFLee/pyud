@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'pyud'
-copyright = '2020, William Lee'
+copyright = ' Copyright 2020 William Lee'
 author = 'William Lee'
 
 # The full version, including alpha/beta/rc tags
