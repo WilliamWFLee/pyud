@@ -14,6 +14,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
+from pyud import __version__
+
 # -- Project information -----------------------------------------------------
 
 project = 'pyud'
@@ -21,7 +23,7 @@ copyright = ' Copyright 2020 William Lee'
 author = 'William Lee'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0rc1'
+release = __version__
 
 # -- General configuration ---------------------------------------------------
 
