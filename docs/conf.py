@@ -32,6 +32,8 @@ with open('../pyud/__init__.py') as f:
 
 release = version
 
+master_doc = 'index' # For RTD Sphinx
+
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
