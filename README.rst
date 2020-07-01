@@ -6,6 +6,9 @@ pyud
 .. image:: https://img.shields.io/codefactor/grade/github/williamwflee/pyud/master
     :target: https://www.codefactor.io/repository/github/williamwflee/pyud
     :alt: CodeFactor grade
+.. image:: https://readthedocs.org/projects/pyud/badge/?version=latest
+    :target: https://readthedocs.org/projects/pyud/
+    :alt: Read the Docs build status
 .. image:: https://img.shields.io/pypi/v/pyud
     :target: https://pypi.org/project/pyud/
     :alt: Project version on PyPI
