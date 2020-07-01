@@ -11,8 +11,9 @@ import json
 from typing import List, Optional, Union
 from urllib import request
 
-from .definition import Definition
 import aiohttp
+
+from .definition import Definition
 
 BASE_URL = "https://api.urbandictionary.com/v0/"
 DEFINE_BY_TERM_URL = BASE_URL + "define?term={}"
