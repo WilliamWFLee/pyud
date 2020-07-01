@@ -25,12 +25,14 @@ author = 'William Lee'
 # The full version, including alpha/beta/rc tags
 version = ''
 with open('../pyud/__init__.py') as f:
-    code = f.read()
-    version = re.search(
-        r'__version__\s*=\s*[\'"](?P<version>[^\'"]*)[\'"]', code, re.MULTILINE
-    ).group('version')
+    for line in f:
+        match = re.search(
+            r'__version__\s*=\s*[\'"](?P<version>[^\'"]*)[\'"]', line
+        )
 
-release = version
+        if match:
+            version = match.group('version')
+            break
 
 release = version
 
