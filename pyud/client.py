@@ -1,18 +1,31 @@
 # -*- coding: utf-8 -*-
 """
 pyud.client
-~~~~~~~~~~~
+Copyright (c) 2020 William Lee
 
-:copyright: 2020 William Lee
-:license: GNU GPL v3.0, see LICENSE
+This file is part of pyud.
+
+pyud is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+pyud is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import json
 from typing import List, Optional, Union
 from urllib import request
 
-from .definition import Definition
 import aiohttp
+
+from .definition import Definition
 
 BASE_URL = "https://api.urbandictionary.com/v0/"
 DEFINE_BY_TERM_URL = BASE_URL + "define?term={}"
