@@ -3,6 +3,9 @@ pyud
 
 .. image:: https://api.travis-ci.com/WilliamWFLee/pyud.svg?branch=master
     :alt: Travis CI build status
+.. image:: https://img.shields.io/codefactor/grade/github/williamwflee/pyud/master
+    :target: https://www.codefactor.io/repository/github/williamwflee/pyud
+    :alt: CodeFactor grade
 .. image:: https://img.shields.io/pypi/v/pyud
     :target: https://pypi.org/project/pyud/
     :alt: Project version on PyPI
