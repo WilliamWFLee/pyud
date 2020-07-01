@@ -4,3 +4,7 @@ div.admonition code.xref, a code.xref {
     border-bottom: inherit;
     font: inherit;
 }
+
+a.paramlink {
+    visibility: visible;
+}
