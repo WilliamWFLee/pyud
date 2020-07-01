@@ -1,6 +1,9 @@
 pyud
 ====
 
+.. image:: https://api.travis-ci.com/WilliamWFLee/pyud.svg?branch=master
+    :alt: Travis CI build status
+
 A simple wrapper for the Urban Dictionary API in Python.
 
 Features
