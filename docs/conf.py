@@ -32,7 +32,7 @@ with open('../pyud/__init__.py') as f:
 
 release = version
 
-master_doc = 'index' # For RTD Sphinx
+release = version
 
 # -- General configuration ---------------------------------------------------
 
