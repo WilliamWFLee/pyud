@@ -1,6 +1,10 @@
 div.admonition code.xref, a code.xref {
     background-color: unset;
     color: inherit;
-    border-bottom: inherit;
-    font: inherit;
+    border-bottom: none;
+    font-family: inherit;
+}
+
+a.paramlink {
+    visibility: visible;
 }

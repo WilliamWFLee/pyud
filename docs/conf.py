@@ -25,14 +25,16 @@ author = 'William Lee'
 # The full version, including alpha/beta/rc tags
 version = ''
 with open('../pyud/__init__.py') as f:
-    code = f.read()
-    version = re.search(
-        r'__version__\s*=\s*[\'"](?P<version>[^\'"]*)[\'"]', code, re.MULTILINE
-    ).group('version')
+    for line in f:
+        match = re.search(
+            r'__version__\s*=\s*[\'"](?P<version>[^\'"]*)[\'"]', line
+        )
+
+        if match:
+            version = match.group('version')
+            break
 
 release = version
-
-master_doc = 'index' # For RTD Sphinx
 
 # -- General configuration ---------------------------------------------------
 
@@ -42,6 +44,8 @@ master_doc = 'index' # For RTD Sphinx
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    'sphinx_paramlinks',
+    'sphinxcontrib_trio',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -73,5 +77,5 @@ autodoc_typehints = 'none'
 # -- Intersphinx options -----------------------------------------------------
 
 intersphinx_mapping = {
-    'python' : ("https://docs.python.org/3", None)
+    'python': ("https://docs.python.org/3", None)
 }

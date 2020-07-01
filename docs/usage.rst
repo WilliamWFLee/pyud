@@ -38,9 +38,9 @@ First, we import pyud into Python. If you get an error while importing, then che
 
 Next, we create a new instance of :class:`Client`. This is used to access the features of the API wrapper, and connect with Urban Dictionary.
 
-Then, we retrieve the definitions for the word *hello* using the :meth:`Client.define` method. This returns a list, with each element in the list being an instance of :class:`Definition`, or :class:`None` if no definitions are found. Because *hello* is such a common word, we can reasonably assume that there are definitions for this word.
+Then, we retrieve the definitions for the word *hello* using the :meth:`Client.define` method. This returns a list, with each element in the list being an instance of :class:`Definition`, or :data:`None` if no definitions are found. Because *hello* is such a common word, we can reasonably assume that there are definitions for this word.
 
-Finally, we take the first definition, ``definitions[0]``, from the list and print the :attr:`word` attribute from that :class:`Definition`. This is a string of the word we wanted the definition for.
+Finally, we take the first definition, ``definitions[0]``, from the list and print the :attr:`~Definition.word` attribute from that :class:`Definition`. This is a string of the word we wanted the definition for.
 
 Running the above code, gives us::
 

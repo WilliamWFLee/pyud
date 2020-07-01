@@ -31,8 +31,8 @@ class Definition:
 
     .. note::
 
-        The ``current_vote`` attribute is not included as a required attribute,
-        as it does not contain any meaningful information.
+        The :attr:`current_vote` attribute is not included 
+        as a required attribute, as it does not contain any meaningful information.
 
     .. attribute:: defid
 

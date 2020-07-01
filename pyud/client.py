@@ -102,14 +102,15 @@ class Client(ClientBase):
         .. note::
 
             The Urban Dictionary API returns 10 random definitions at a time.
-            Even if ``limit`` to set to an integer greater than 10,
-            only 10 definitions will be returned.
+            Even if :paramref:`~Client.random.limit` to set to an integer 
+            greater than 10, only 10 definitions will be returned.
 
         .. warning::
 
             The above behaviour may change in a subsequent version,
-            so it is **strongly recommended** that you do not set ``limit``
-            to be higher than 10, and make use of validation to avoid this.
+            so it is **strongly recommended** that you do not set 
+            :paramref:`~Client.random.limit` to be higher than 10, 
+            and make use of validation to avoid this.
         """
         definitions = self._fetch_definitions(RANDOM_URL)
 
