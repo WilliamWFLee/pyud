@@ -1,6 +1,19 @@
 pyud
 ====
 
+.. image:: https://img.shields.io/codefactor/grade/github/williamwflee/pyud/master
+    :target: https://www.codefactor.io/repository/github/williamwflee/pyud
+    :alt: CodeFactor grade
+.. image:: https://readthedocs.org/projects/pyud/badge/?version=latest
+    :target: https://readthedocs.org/projects/pyud/
+    :alt: Read the Docs build status
+.. image:: https://img.shields.io/pypi/v/pyud
+    :target: https://pypi.org/project/pyud/
+    :alt: Project version on PyPI
+.. image:: https://img.shields.io/pypi/pyversions/pyud
+    :target: https://pypi.org/project/pyud/
+    :alt: Python versions supported on PyPI
+
 A simple wrapper for the Urban Dictionary API in Python.
 
 Features
@@ -14,7 +27,6 @@ Requirements
 ------------
 
 - **Python 3.6 or higher.** Python 2 is not supported.
-
 - `aiohttp <https://docs.aiohttp.org/en/stable/>`_, version 3.6.2
 
 Installing
