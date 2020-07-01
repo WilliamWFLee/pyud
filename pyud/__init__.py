@@ -13,4 +13,4 @@ from .definition import Definition
 from .client import AsyncClient, Client
 
 __author__ = "William Lee"
-__version__ = "1.0.0rc1"
+__version__ = "1.0.0"
