@@ -1,8 +1,6 @@
 pyud
 ====
 
-.. image:: https://api.travis-ci.com/WilliamWFLee/pyud.svg?branch=master
-    :alt: Travis CI build status
 .. image:: https://img.shields.io/codefactor/grade/github/williamwflee/pyud/master
     :target: https://www.codefactor.io/repository/github/williamwflee/pyud
     :alt: CodeFactor grade
@@ -15,6 +13,8 @@ pyud
 .. image:: https://img.shields.io/pypi/pyversions/pyud
     :target: https://pypi.org/project/pyud/
     :alt: Python versions supported on PyPI
+.. image:: https://api.travis-ci.com/WilliamWFLee/pyud.svg?branch=master
+    :alt: Travis CI build status
 
 A simple wrapper for the Urban Dictionary API in Python.
 
