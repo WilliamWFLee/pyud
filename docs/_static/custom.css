@@ -1,7 +1,7 @@
 div.admonition code.xref, a code.xref {
     background-color: unset;
     color: inherit;
-    border-bottom: inherit;
+    border-bottom: none;
     font-family: inherit;
 }
 
