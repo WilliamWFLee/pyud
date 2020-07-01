@@ -1,8 +1,6 @@
 pyud
 ====
 
-.. image:: https://travis-ci.com/WilliamWFLee/pyud.svg?branch=master
-    :alt: Travis CI build status
 .. image:: https://img.shields.io/codefactor/grade/github/williamwflee/pyud/master
     :target: https://www.codefactor.io/repository/github/williamwflee/pyud
     :alt: CodeFactor grade
