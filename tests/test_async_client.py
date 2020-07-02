@@ -10,7 +10,7 @@ def client():
 
 
 @pytest.mark.incremental
-class TestClient:
+class TestAsyncClient:
     @pytest.mark.asyncio
     async def test_client(self, client):
         assert client
