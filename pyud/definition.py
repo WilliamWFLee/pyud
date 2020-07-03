@@ -114,7 +114,7 @@ class Definition:
         permalink: str,
         sound_urls: List[str],
         written_on: str,
-        **attrs: Any,
+        **attrs: Any
     ):
         """
         Instantiates an instance of an Urban Dictionary definition
