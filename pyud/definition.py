@@ -19,7 +19,6 @@ You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-import json
 from datetime import datetime as dt
 from typing import Any, List
 
@@ -129,8 +128,13 @@ class Definition:
         self.permalink = permalink
         self.sound_urls = sound_urls
 
-        # Parses the RFC 3339 timestring to a naive datetime object
-        self.written_on = dt.strptime(written_on, "%Y-%m-%dT%H:%M:%S.%fZ")
+        try:
+            # Parses the RFC 3339 timestring to a naive datetime object
+            self.written_on = dt.strptime(written_on, "%Y-%m-%dT%H:%M:%S.%fZ")
+        except ValueError:
+            raise ValueError(
+                "written_on date was not given in the correct format"
+            ) from None
 
         # Excess attributes are added
         for name, value in attrs.items():
