@@ -12,9 +12,9 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   introduction
-   usage
-   reference
-   changelog
+    introduction
+    usage
+    reference
+    changelog
