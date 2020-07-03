@@ -79,7 +79,7 @@ class Client(ClientBase):
         """
         Fetch definitions from the API url given
         """
-        with request.urlopen(url) as response:
+        with request.urlopen(url) as response:  # nosec
             return self._parse_definitions_from_json(
                 response.read().decode('utf-8')
             )
@@ -142,7 +142,7 @@ class AsyncClient(ClientBase):
         Fetch definitions from the API url given
         """
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
+            async with session.get(url) as response:  # nosec
                 return self._parse_definitions_from_json(await response.text())
 
     async def define(self, term: str) -> Optional[List[Definition]]:
