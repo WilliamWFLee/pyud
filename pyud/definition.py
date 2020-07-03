@@ -19,7 +19,6 @@ You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-import json
 from datetime import datetime as dt
 from typing import Any, List
 
