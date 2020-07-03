@@ -127,7 +127,9 @@ class Client(ClientBase):
             :paramref:`~Client.random.limit` to be higher than 10,
             and make use of validation to avoid this.
         """
-        definitions = self._fetch_definitions(RANDOM_URL)
+        definitions = []
+        for _ in range(limit // 10 + 1):
+            definitions += self._fetch_definitions(RANDOM_URL)
 
         return definitions[:limit]
 
@@ -185,6 +187,8 @@ class AsyncClient(ClientBase):
 
             See :meth:`Client.random` for warning.
         """
-        definitions = await self._fetch_definitions(RANDOM_URL)
+        definitions = []
+        for _ in range(limit // 10 + 1):
+            definitions += await self._fetch_definitions(RANDOM_URL)
 
         return definitions[:limit]
