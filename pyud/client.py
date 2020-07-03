@@ -37,6 +37,7 @@ class ClientBase:
     """
     Base class for the Client and AsyncClient
     """
+
     def _parse_definitions_from_json(
         self, data: Union[str, bytes, bytearray]
     ) -> Optional[List[Definition]]:
@@ -73,11 +74,12 @@ class Client(ClientBase):
     """
     Synchronous client for the Urban Dictionary API
     """
+
     def _fetch_definitions(self, url: str) -> Optional[List[Definition]]:
         """
         Fetch definitions from the API url given
         """
-        with request.urlopen(url) as response:
+        with request.urlopen(url) as response:  # nosec
             return self._parse_definitions_from_json(
                 response.read().decode('utf-8')
             )
@@ -115,14 +117,14 @@ class Client(ClientBase):
         .. note::
 
             The Urban Dictionary API returns 10 random definitions at a time.
-            Even if :paramref:`~Client.random.limit` to set to an integer 
+            Even if :paramref:`~Client.random.limit` to set to an integer
             greater than 10, only 10 definitions will be returned.
 
         .. warning::
 
             The above behaviour may change in a subsequent version,
-            so it is **strongly recommended** that you do not set 
-            :paramref:`~Client.random.limit` to be higher than 10, 
+            so it is **strongly recommended** that you do not set
+            :paramref:`~Client.random.limit` to be higher than 10,
             and make use of validation to avoid this.
         """
         definitions = self._fetch_definitions(RANDOM_URL)
@@ -134,12 +136,13 @@ class AsyncClient(ClientBase):
     """
     Asynchronous client for the Urban Dictionary API
     """
+
     async def _fetch_definitions(self, url: str) -> Optional[List[Definition]]:
         """
         Fetch definitions from the API url given
         """
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
+            async with session.get(url) as response:  # nosec
                 return self._parse_definitions_from_json(await response.text())
 
     async def define(self, term: str) -> Optional[List[Definition]]:

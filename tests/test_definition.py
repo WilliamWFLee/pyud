@@ -43,7 +43,7 @@ def test_incomplete_definition():
         del incomplete_data[key]
 
         with pytest.raises(TypeError):
-            definition = pyud.Definition(**incomplete_data)
+            pyud.Definition(**incomplete_data)
 
 
 def test_incorrect_date_format():
@@ -52,7 +52,7 @@ def test_incorrect_date_format():
         data["written_on"] = date
 
         with pytest.raises(ValueError):
-            definition = pyud.Definition(**data)
+            pyud.Definition(**data)
 
 
 def test_excess_attributes():
