@@ -43,7 +43,7 @@ class Definition:
 
     .. note::
 
-        The :attr:`current_vote` attribute is not included 
+        The :attr:`current_vote` attribute is not included
         as a required attribute, as it does not contain any meaningful information.
 
     .. attribute:: defid
@@ -100,6 +100,7 @@ class Definition:
 
         :type: datetime.datetime
     """
+
     def __init__(
         self,
         *,
