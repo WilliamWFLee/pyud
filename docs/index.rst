@@ -17,3 +17,4 @@ Contents
    introduction
    usage
    reference
+   changelog
