@@ -35,4 +35,8 @@ class TestAsyncClient:
     async def test_client_random_limit(self, client):
         assert len(await client.random(limit=3)) == 3
         assert len(await client.random(limit=10)) == 10
-        assert len(await client.random(limit=43)) == 10
+
+    @pytest.mark.asyncio
+    @pytest.mark.xfail
+    async def test_client_random_limit_gt_10(self, client):
+        assert len(await client.random(limit=43)) == 43
