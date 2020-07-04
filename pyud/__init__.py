@@ -28,7 +28,7 @@ __author__ = "William Lee"
 __version__ = "1.0.1rc1"
 
 VersionInfo = namedtuple(
-    'pyud.version_info', 'major minor micro releaselevel serial'
+    'version_info', 'major minor micro releaselevel serial'
 )
 
 version_info = VersionInfo(
