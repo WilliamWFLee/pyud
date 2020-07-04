@@ -113,19 +113,6 @@ class Client(ClientBase):
         :type limit: int
         :return: A list of definitions
         :rtype: List[Definition]
-
-        .. note::
-
-            The Urban Dictionary API returns 10 random definitions at a time.
-            Even if :paramref:`~Client.random.limit` to set to an integer
-            greater than 10, only 10 definitions will be returned.
-
-        .. warning::
-
-            The above behaviour may change in a subsequent version,
-            so it is **strongly recommended** that you do not set
-            :paramref:`~Client.random.limit` to be higher than 10,
-            and make use of validation to avoid this.
         """
         definitions = []
         for _ in range(limit // 10 + 1):
@@ -178,14 +165,6 @@ class AsyncClient(ClientBase):
         :type limit: int
         :return: A list of definitions
         :rtype: List[Definition]
-
-        .. note ::
-
-            See :meth:`Client.random` for note.
-
-        .. warning ::
-
-            See :meth:`Client.random` for warning.
         """
         definitions = []
         for _ in range(limit // 10 + 1):
