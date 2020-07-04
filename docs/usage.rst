@@ -74,6 +74,6 @@ The following example gives an example using :class:`AsyncClient`:
 
 Running this example, we get the same result as with the first.
 
-You should be familiar with the concepts of using the :mod:`asyncio` module in order to understand this example. If not, then you can refer to the Python documentation on :doc:`<python:library/asyncio-task` for a quick rundown of the concepts.
+You should be familiar with the concepts of using the :mod:`asyncio` module in order to understand this example. If not, then you can refer to the Python documentation on :doc:`<python:library/asyncio-task>` for a quick rundown of the concepts.
 
 .. _Urban Dictionary: https://urbandictionary.com
