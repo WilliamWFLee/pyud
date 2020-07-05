@@ -25,7 +25,7 @@ from urllib import request
 
 import aiohttp
 
-from .definition import Definition
+from . import definition
 
 BASE_URL = "https://api.urbandictionary.com/v0/"
 DEFINE_BY_TERM_URL = BASE_URL + "define?term={}"
@@ -40,7 +40,7 @@ class ClientBase:
 
     def _parse_definitions_from_json(
         self, data: Union[str, bytes, bytearray]
-    ) -> Optional[List[Definition]]:
+    ) -> Optional[List['definition.Definition']]:
         """
         Returns a list of Definitions from JSON
 
@@ -63,7 +63,7 @@ class ClientBase:
 
         for dictionary in definitions_list:
             try:
-                definitions += [Definition(**dictionary)]
+                definitions += [definition.Definition(**dictionary)]
             except TypeError:
                 pass
 
@@ -75,7 +75,9 @@ class Client(ClientBase):
     Synchronous client for the Urban Dictionary API
     """
 
-    def _fetch_definitions(self, url: str) -> Optional[List[Definition]]:
+    def _fetch_definitions(
+        self, url: str
+    ) -> Optional[List['definition.Definition']]:
         """
         Fetch definitions from the API url given
         """
@@ -84,7 +86,7 @@ class Client(ClientBase):
                 response.read().decode('utf-8')
             )
 
-    def define(self, term: str) -> Optional[List[Definition]]:
+    def define(self, term: str) -> Optional[List['definition.Definition']]:
         """Finds definitions for a given term
 
         :param term: The term to find definitions for
@@ -94,7 +96,7 @@ class Client(ClientBase):
         """
         return self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
 
-    def from_id(self, defid: int) -> Optional[Definition]:
+    def from_id(self, defid: int) -> Optional['definition.Definition']:
         """Finds a definition by ID
 
         :param defid: The ID of the definition
@@ -106,7 +108,7 @@ class Client(ClientBase):
 
         return definitions[0] if definitions else None
 
-    def random(self, *, limit: int = 10) -> List[Definition]:
+    def random(self, *, limit: int = 10) -> List['definition.Definition']:
         """Returns a random list of definitions
 
         :param limit: The number of definitions to return, defaults to 10
@@ -126,7 +128,9 @@ class AsyncClient(ClientBase):
     Asynchronous client for the Urban Dictionary API
     """
 
-    async def _fetch_definitions(self, url: str) -> Optional[List[Definition]]:
+    async def _fetch_definitions(
+        self, url: str
+    ) -> Optional[List['definition.Definition']]:
         """
         Fetch definitions from the API url given
         """
@@ -134,7 +138,9 @@ class AsyncClient(ClientBase):
             async with session.get(url) as response:  # nosec
                 return self._parse_definitions_from_json(await response.text())
 
-    async def define(self, term: str) -> Optional[List[Definition]]:
+    async def define(
+        self, term: str
+    ) -> Optional[List['definition.Definition']]:
         """Finds definitions for a given term asynchronously
 
         :param term: The term to find definitions for
@@ -144,7 +150,7 @@ class AsyncClient(ClientBase):
         """
         return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
 
-    async def from_id(self, defid: int) -> Optional[Definition]:
+    async def from_id(self, defid: int) -> Optional['definition.Definition']:
         """Finds a definition by ID asynchronously
 
         :param defid: The ID of the definition
@@ -158,7 +164,9 @@ class AsyncClient(ClientBase):
 
         return definitions[0] if definitions else None
 
-    async def random(self, *, limit: int = 10) -> List[Definition]:
+    async def random(
+        self, *, limit: int = 10
+    ) -> List['definition.Definition']:
         """Returns a random list of definitions
 
         :param limit: The number of definitions to return, defaults to 10
