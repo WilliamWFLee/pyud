@@ -20,7 +20,9 @@ along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from datetime import datetime as dt
-from typing import Any, List
+from typing import Any, List, Union
+
+from . import client
 
 
 class Definition:
@@ -102,6 +104,7 @@ class Definition:
 
     def __init__(
         self,
+        client: Union['client.AsyncClient', 'client.Client'],
         *,
         defid: int,
         word: str,
@@ -118,6 +121,7 @@ class Definition:
         """
         Instantiates an instance of an Urban Dictionary definition
         """
+        self._client = client
         self.defid = defid
         self.word = word
         self.definition = definition
