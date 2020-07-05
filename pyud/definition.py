@@ -25,7 +25,7 @@ from typing import Any, List, Union
 
 from . import client, reference
 
-REFERENCE_REGEX = re.compile(r"\[(?P<ref>\S+)\]")
+REFERENCE_REGEX = re.compile(r"\[(?P<ref>.+?)\]")
 
 
 class Definition:
