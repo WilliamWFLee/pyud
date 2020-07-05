@@ -23,6 +23,7 @@ from collections import namedtuple
 
 from .definition import Definition
 from .client import AsyncClient, Client
+from .reference import AsyncReference, Reference
 
 __author__ = "William Lee"
 __version__ = "1.0.1rc1"
