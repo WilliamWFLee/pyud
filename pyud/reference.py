@@ -18,3 +18,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import List
+
+from . import client, definition
+
+
+class ReferenceBase:
+    def __init__(self, client: 'client.Client', word: str):
+        self.client = client
+        self.word = word
+
+
+class Reference(ReferenceBase):
+    def define(self) -> List['definition.Definition']:
+        return self.client.define(self.word)
+
+
+class AsyncReference(ReferenceBase):
+    async def define(self) -> List['definition.Definition']:
+        return await self.client.define(self.word)
