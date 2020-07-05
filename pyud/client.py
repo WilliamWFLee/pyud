@@ -63,7 +63,7 @@ class ClientBase:
 
         for dictionary in definitions_list:
             try:
-                definitions += [definition.Definition(**dictionary)]
+                definitions += [definition.Definition(self, **dictionary)]
             except TypeError:
                 pass
 
