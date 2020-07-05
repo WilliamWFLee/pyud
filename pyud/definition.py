@@ -19,10 +19,13 @@ You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+import re
 from datetime import datetime as dt
 from typing import Any, List, Union
 
-from . import client
+from . import client, reference
+
+REFERENCE_REGEX = re.compile(r"\[(?P<ref>\S+)\]")
 
 
 class Definition:
@@ -143,3 +146,20 @@ class Definition:
         # Excess attributes are added
         for name, value in attrs.items():
             setattr(self, name, value)
+
+        self._find_references()
+
+    def _find_references(self):
+        self.references = []
+        for text in self.definition, self.example:
+            matches = REFERENCE_REGEX.finditer(text)
+            if matches:
+                for match in matches:
+                    ref_type = (
+                        reference.Reference
+                        if isinstance(self._client, client.Client)
+                        else reference.AsyncReference
+                    )
+                    self.references += [
+                        ref_type(self._client, match.group('ref'))
+                    ]
