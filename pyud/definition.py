@@ -50,6 +50,18 @@ class Definition:
         The :attr:`current_vote` attribute is not included
         as a required attribute, as it does not contain any meaningful information.
 
+    .. attribute:: references
+
+        A list of references to other terms found in the :attr:`definition`
+        and :attr:`example` attributes. These references are found enclosed
+        in square brackets, ``[like this]``, and are extracted into reference objects.
+
+        The class of the reference objects is :class:`Reference`
+        if you have used :class:`Client` to obtain definitions,
+        and :class:`AsyncReference` if you have used :class:`AsyncClient`.
+
+        :type: Union[List[Reference], List[AsyncReference]]
+
     .. attribute:: defid
 
         The ID of the definition
