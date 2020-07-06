@@ -19,12 +19,20 @@ You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import List, Union
+from typing import List, Optional, Union
 
 from . import client, definition
 
 
 class ReferenceBase:
+    """
+    Represents a reference in an Urban Dictionary definition.
+
+    Instances of this class should not obtained directly, and should instead be obtained
+    by accessing the :paramref:`~Definition.references` attribute
+    on an instance of :class:`Definition`.
+    """
+
     def __init__(
         self, client: Union['client.Client', 'client.AsyncClient'], word: str
     ):
@@ -33,10 +41,20 @@ class ReferenceBase:
 
 
 class Reference(ReferenceBase):
-    def define(self) -> List['definition.Definition']:
+    def define(self) -> Optional[List['definition.Definition']]:
+        """Returns definitions for the reference
+
+        :return: A list of definitions, or :obj:`None` if none are found
+        :rtype: Optional[List[Definition]]
+        """
         return self.client.define(self.word)
 
 
 class AsyncReference(ReferenceBase):
-    async def define(self) -> List['definition.Definition']:
+    async def define(self) -> Optional[List['definition.Definition']]:
+        """Returns definitions for the reference asynchronously
+
+        :return: A list of definitions, or :obj:`None` if none are found
+        :rtype: Optional[List[Definition]]
+        """
         return await self.client.define(self.word)
