@@ -165,13 +165,14 @@ class Definition:
         self.references = []
         for text in self.definition, self.example:
             matches = REFERENCE_REGEX.finditer(text)
-            if matches:
-                for match in matches:
-                    ref_type = (
-                        reference.Reference
-                        if isinstance(self._client, client.Client)
-                        else reference.AsyncReference
-                    )
-                    self.references += [
-                        ref_type(self._client, match.group('ref'))
-                    ]
+            if not matches:
+                continue
+            for match in matches:
+                ref_type = (
+                    reference.Reference
+                    if isinstance(self._client, client.Client)
+                    else reference.AsyncReference
+                )
+                self.references += [
+                    ref_type(self._client, match.group('ref'))
+                ]
