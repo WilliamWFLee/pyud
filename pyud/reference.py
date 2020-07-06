@@ -19,13 +19,15 @@ You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-from typing import List
+from typing import List, Union
 
 from . import client, definition
 
 
 class ReferenceBase:
-    def __init__(self, client: 'client.Client', word: str):
+    def __init__(
+        self, client: Union['client.Client', 'client.AsyncClient'], word: str
+    ):
         self.client = client
         self.word = word
 
