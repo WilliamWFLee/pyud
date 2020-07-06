@@ -44,7 +44,7 @@ class Reference(ReferenceBase):
     def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference
 
-        :return: A list of definitions, or :obj:`None` if none are found
+        :return: A list of definitions, or :data:`None` if none are found
         :rtype: Optional[List[Definition]]
         """
         return self.client.define(self.word)
@@ -54,7 +54,7 @@ class AsyncReference(ReferenceBase):
     async def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference asynchronously
 
-        :return: A list of definitions, or :obj:`None` if none are found
+        :return: A list of definitions, or :data:`None` if none are found
         :rtype: Optional[List[Definition]]
         """
         return await self.client.define(self.word)
