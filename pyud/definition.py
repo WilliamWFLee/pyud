@@ -138,7 +138,7 @@ class Definition:
         permalink: str,
         sound_urls: List[str],
         written_on: str,
-        **attrs: Any
+        **attrs: Any,
     ):
         """
         Instantiates an instance of an Urban Dictionary definition
@@ -181,3 +181,10 @@ class Definition:
                     else reference.AsyncReference
                 )
                 self.references += [ref_type(self._client, match.group('ref'))]
+
+    def __str__(self):
+        return (
+            f"Definition of '{self.word}' ID={self.defid}: "
+            f"'{self.definition[:75]}'"
+            + ("..." if len(self.definition) > 75 else "")
+        )
