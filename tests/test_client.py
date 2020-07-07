@@ -16,6 +16,7 @@ class TestClient:
 
     def test_client_define(self, client):
         assert client.define('hello')
+        assert client.define('something real')
         assert client.define('skadhfujahkduikfbresfvkayjfsrvued') is None
 
     def test_client_from_id(self, client):
