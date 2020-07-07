@@ -53,8 +53,13 @@ class Definition:
     .. attribute:: references
 
         A list of references to other terms found in the :attr:`definition`
-        and :attr:`example` attributes. These references are found enclosed
-        in square brackets, ``[like this]``, and are extracted into reference objects.
+        and :attr:`example` attributes. References found within these strings
+        are enclosed in squares brackets. For example, this::
+
+            [This] is enclosed in [square brackets]
+
+        has references to *this* and **square brackets**.
+        References are extracted to reference objects
 
         The class of the reference objects is :class:`Reference`
         if you have used :class:`Client` to obtain definitions,
