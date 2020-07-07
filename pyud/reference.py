@@ -46,6 +46,7 @@ class Reference(ReferenceBase):
     on an instance of :class:`Definition`.
 
     .. attribute:: word
+
         The word or phrase of the reference
 
         :type: str
@@ -70,6 +71,7 @@ class AsyncReference(ReferenceBase):
     on an instance of :class:`Definition`.
 
     .. attribute:: word
+
         The word or phrase of the reference
 
         :type: str
