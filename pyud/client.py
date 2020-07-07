@@ -22,6 +22,7 @@ along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 import json
 from typing import List, Optional, Union
 from urllib import request
+from urllib.parse import quote as url_quote
 
 import aiohttp
 
@@ -92,7 +93,9 @@ class Client(ClientBase):
         :return: A list of definitions or :data:`None` if not found
         :rtype: Optional[List[Definition]]
         """
-        return self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
+        return self._fetch_definitions(
+            DEFINE_BY_TERM_URL.format(url_quote(term))
+        )
 
     def from_id(self, defid: int) -> Optional[Definition]:
         """Finds a definition by ID
@@ -142,7 +145,9 @@ class AsyncClient(ClientBase):
         :return: A list of definitions or :data:`None` if not found
         :rtype: Optional[List[Definition]]
         """
-        return await self._fetch_definitions(DEFINE_BY_TERM_URL.format(term))
+        return await self._fetch_definitions(
+            DEFINE_BY_TERM_URL.format(url_quote(term))
+        )
 
     async def from_id(self, defid: int) -> Optional[Definition]:
         """Finds a definition by ID asynchronously
