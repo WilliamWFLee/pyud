@@ -26,12 +26,12 @@ from .client import AsyncClient, Client
 from .reference import AsyncReference, Reference
 
 __author__ = "William Lee"
-__version__ = "1.0.1rc1"
+__version__ = "1.1.0a1"
 
 VersionInfo = namedtuple(
     'version_info', 'major minor micro releaselevel serial'
 )
 
 version_info = VersionInfo(
-    major=1, minor=0, micro=1, releaselevel='candidate', serial=1
+    major=1, minor=1, micro=0, releaselevel='alpha', serial=1
 )
