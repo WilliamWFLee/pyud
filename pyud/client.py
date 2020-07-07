@@ -70,6 +70,12 @@ class ClientBase:
 
         return definitions if definitions else None
 
+    def __str__(self):
+        return "Instance of {0.__name__}".format(type(self))
+
+    def __repr__(self):
+        return "{0.__name__}()".format(type(self))
+
 
 class Client(ClientBase):
     """

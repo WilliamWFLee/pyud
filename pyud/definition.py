@@ -181,3 +181,25 @@ class Definition:
                     else reference.AsyncReference
                 )
                 self.references += [ref_type(self._client, match.group('ref'))]
+
+    def __str__(self):
+        return (
+            "Definition of {0.word!r} ID={self.defid}: "
+            "'{0.definition[:75]}'"
+            + ("..." if len(self.definition) > 75 else "")
+        ).format(self)
+
+    def __repr__(self):
+        return (
+            "Definition(client={0._client!r}, defid={0.defid}, "
+            "word={0.word!r}, definition={0.definition!r}, "
+            "author={0.author!r}, thumbs_up={0.thumbs_up}, "
+            "thumbs_down={0.thumbs_down}, example={0.example!r}, "
+            "permalink={0.permalink!r}, sound_urls={0.sound_urls}, "
+            "written_on={1})"
+        ).format(self, self.written_on.strftime('%Y-%m-%dT%H:%M:%S.%fZ'))
+
+    def __eq__(self, other):
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return self.defid == other.defid
