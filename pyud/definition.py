@@ -198,3 +198,8 @@ class Definition:
             f"permalink={self.permalink!r}, sound_urls={self.sound_urls}, "
             f"written_on={self.written_on.strftime('%Y-%m-%dT%H:%M:%S.%fZ')})"
         )
+
+    def __eq__(self, other):
+        if not isinstance(other, type(self)):
+            return NotImplemented
+        return self.defid == other.defid
