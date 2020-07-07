@@ -36,3 +36,15 @@ Definition
 
 .. autoclass:: Definition
     :members:
+
+Reference
+---------
+
+.. autoclass:: Reference
+    :members:
+
+AsyncReference
+--------------
+
+.. autoclass:: AsyncReference
+    :members:

@@ -19,8 +19,13 @@ You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+import re
 from datetime import datetime as dt
-from typing import Any, List
+from typing import Any, List, Union
+
+from . import client, reference
+
+REFERENCE_REGEX = re.compile(r"\[(?P<ref>.+?)\]")
 
 
 class Definition:
@@ -44,6 +49,25 @@ class Definition:
 
         The :attr:`current_vote` attribute is not included
         as a required attribute, as it does not contain any meaningful information.
+
+    .. attribute:: references
+
+        A list of references to other terms found in the :attr:`definition`
+        and :attr:`example` attributes. References found within these strings
+        are enclosed in squares brackets. For example, this
+
+        .. code-block:: text
+
+            [This] is enclosed in [square brackets]
+
+        has references to *this* and **square brackets**.
+        References are extracted to reference objects
+
+        The class of the reference objects is :class:`Reference`
+        if you have used :class:`Client` to obtain definitions,
+        and :class:`AsyncReference` if you have used :class:`AsyncClient`.
+
+        :type: Union[List[Reference], List[AsyncReference]]
 
     .. attribute:: defid
 
@@ -102,6 +126,7 @@ class Definition:
 
     def __init__(
         self,
+        client: Union['client.AsyncClient', 'client.Client'],
         *,
         defid: int,
         word: str,
@@ -118,6 +143,7 @@ class Definition:
         """
         Instantiates an instance of an Urban Dictionary definition
         """
+        self._client = client
         self.defid = defid
         self.word = word
         self.definition = definition
@@ -139,3 +165,19 @@ class Definition:
         # Excess attributes are added
         for name, value in attrs.items():
             setattr(self, name, value)
+
+        self._find_references()
+
+    def _find_references(self):
+        self.references = []
+        for text in self.definition, self.example:
+            matches = REFERENCE_REGEX.finditer(text)
+            if not matches:
+                continue
+            for match in matches:
+                ref_type = (
+                    reference.Reference
+                    if isinstance(self._client, client.Client)
+                    else reference.AsyncReference
+                )
+                self.references += [ref_type(self._client, match.group('ref'))]

@@ -33,33 +33,38 @@ EXTRA_ATTRIBUTES = {
 }
 
 
-def test_complete_definition():
-    assert pyud.Definition(**DATA) is not None
+@pytest.fixture
+def client():
+    return pyud.Client()
 
 
-def test_incomplete_definition():
+def test_complete_definition(client):
+    assert pyud.Definition(client, **DATA) is not None
+
+
+def test_incomplete_definition(client):
     for key in DATA:
         incomplete_data = DATA.copy()
         del incomplete_data[key]
 
         with pytest.raises(TypeError):
-            pyud.Definition(**incomplete_data)
+            pyud.Definition(client, **incomplete_data)
 
 
-def test_incorrect_date_format():
+def test_incorrect_date_format(client):
     for date in INCORRECT_DATES:
         data = DATA.copy()
         data["written_on"] = date
 
         with pytest.raises(ValueError):
-            pyud.Definition(**data)
+            pyud.Definition(client, **data)
 
 
-def test_excess_attributes():
+def test_excess_attributes(client):
     data = DATA.copy()
     data = dict(data, **EXTRA_ATTRIBUTES)
 
-    definition = pyud.Definition(**data)
+    definition = pyud.Definition(client, **data)
 
     for key, value in EXTRA_ATTRIBUTES.items():
         assert getattr(definition, key) == value
