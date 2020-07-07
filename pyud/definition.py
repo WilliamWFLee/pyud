@@ -54,7 +54,9 @@ class Definition:
 
         A list of references to other terms found in the :attr:`definition`
         and :attr:`example` attributes. References found within these strings
-        are enclosed in squares brackets. For example, this::
+        are enclosed in squares brackets. For example, this
+
+        .. code-block:: text
 
             [This] is enclosed in [square brackets]
 
