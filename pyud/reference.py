@@ -35,6 +35,12 @@ class ReferenceBase:
         self.client = client
         self.word = word
 
+    def __str__(self):
+        return f"Reference to '{self.word}'"
+
+    def __repr__(self):
+        return f"{type(self).__name__}(client={self.client!r}, word={self.word!r})"
+
 
 class Reference(ReferenceBase):
     """
