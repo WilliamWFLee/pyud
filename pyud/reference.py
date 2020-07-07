@@ -27,10 +27,6 @@ from . import client, definition
 class ReferenceBase:
     """
     Represents a reference in an Urban Dictionary definition.
-
-    Instances of this class should not obtained directly, and should instead be obtained
-    by accessing the :paramref:`~Definition.references` attribute
-    on an instance of :class:`Definition`.
     """
 
     def __init__(
@@ -41,6 +37,14 @@ class ReferenceBase:
 
 
 class Reference(ReferenceBase):
+    """
+    The class of references in :paramref:`Definition.references`
+    when :class:`Client` is used to obtain those definitions
+
+    Instances of this class should not obtained directly, and should instead be obtained
+    by accessing the :paramref:`~Definition.references` attribute
+    on an instance of :class:`Definition`.
+    """
     def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference
 
@@ -51,6 +55,14 @@ class Reference(ReferenceBase):
 
 
 class AsyncReference(ReferenceBase):
+    """
+    The class of references in :paramref:`Definition.references`
+    when :class:`AsyncClient` is used to obtain those definitions
+
+    Instances of this class should not obtained directly, and should instead be obtained
+    by accessing the :paramref:`~Definition.references` attribute
+    on an instance of :class:`Definition`.
+    """
     async def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference asynchronously
 
