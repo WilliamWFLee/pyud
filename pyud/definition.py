@@ -188,3 +188,13 @@ class Definition:
             f"'{self.definition[:75]}'"
             + ("..." if len(self.definition) > 75 else "")
         )
+
+    def __repr__(self):
+        return (
+            f"Definition(client={self._client!r}, defid={self.defid}, "
+            f"word={self.word!r}, definition={self.definition!r}, "
+            f"author={self.author!r}, thumbs_up={self.thumbs_up}, "
+            f"thumbs_down={self.thumbs_down}, example={self.example!r}, "
+            f"permalink={self.permalink!r}, sound_urls={self.sound_urls}, "
+            f"written_on={self.written_on.strftime('%Y-%m-%dT%H:%M:%S.%fZ')})"
+        )
