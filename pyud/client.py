@@ -71,10 +71,10 @@ class ClientBase:
         return definitions if definitions else None
 
     def __str__(self):
-        return f"Instance of {type(self).__name__}"
+        return "Instance of {0.__name__}".format(type(self))
 
     def __repr__(self):
-        return f"{type(self).__name__}()"
+        return "{0.__name__}()".format(type(self))
 
 
 class Client(ClientBase):
