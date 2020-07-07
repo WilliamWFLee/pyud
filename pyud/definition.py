@@ -180,6 +180,4 @@ class Definition:
                     if isinstance(self._client, client.Client)
                     else reference.AsyncReference
                 )
-                self.references += [
-                    ref_type(self._client, match.group('ref'))
-                ]
+                self.references += [ref_type(self._client, match.group('ref'))]

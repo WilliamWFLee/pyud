@@ -50,6 +50,7 @@ class Reference(ReferenceBase):
 
         :type: str
     """
+
     def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference
 
@@ -73,6 +74,7 @@ class AsyncReference(ReferenceBase):
 
         :type: str
     """
+
     async def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference asynchronously
 
