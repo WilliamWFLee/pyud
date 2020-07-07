@@ -44,6 +44,11 @@ class Reference(ReferenceBase):
     Instances of this class should not obtained directly, and should instead be obtained
     by accessing the :paramref:`~Definition.references` attribute
     on an instance of :class:`Definition`.
+
+    .. attribute:: word
+        The word or phrase of the reference
+
+        :type: str
     """
     def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference
@@ -62,6 +67,11 @@ class AsyncReference(ReferenceBase):
     Instances of this class should not obtained directly, and should instead be obtained
     by accessing the :paramref:`~Definition.references` attribute
     on an instance of :class:`Definition`.
+
+    .. attribute:: word
+        The word or phrase of the reference
+
+        :type: str
     """
     async def define(self) -> Optional[List['definition.Definition']]:
         """Returns definitions for the reference asynchronously
