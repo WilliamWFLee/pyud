@@ -18,6 +18,7 @@ class TestAsyncClient:
     @pytest.mark.asyncio
     async def test_client_define(self, client):
         assert await client.define('hello')
+        assert await client.define('something real')
         assert await client.define('skadhfujahkduikfbresfvkayjfsrvued') is None
 
     @pytest.mark.asyncio
