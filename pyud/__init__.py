@@ -25,12 +25,12 @@ from .definition import Definition
 from .client import AsyncClient, Client
 
 __author__ = "William Lee"
-__version__ = "1.0.1rc1"
+__version__ = "1.0.1"
 
 VersionInfo = namedtuple(
     'version_info', 'major minor micro releaselevel serial'
 )
 
 version_info = VersionInfo(
-    major=1, minor=0, micro=1, releaselevel='candidate', serial=1
+    major=1, minor=0, micro=1, releaselevel='final', serial=0
 )
