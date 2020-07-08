@@ -143,7 +143,7 @@ class Definition:
         """
         Instantiates an instance of an Urban Dictionary definition
         """
-        self._client = client
+        self.client = client
         self.defid = defid
         self.word = word
         self.definition = definition
@@ -177,10 +177,10 @@ class Definition:
             for match in matches:
                 ref_type = (
                     reference.Reference
-                    if isinstance(self._client, client.Client)
+                    if isinstance(self.client, client.Client)
                     else reference.AsyncReference
                 )
-                self.references += [ref_type(self._client, match.group('ref'))]
+                self.references += [ref_type(self.client, match.group('ref'))]
 
     def __str__(self):
         return (
