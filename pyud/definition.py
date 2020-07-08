@@ -175,18 +175,32 @@ class Definition:
         self._find_references()
 
     def _find_references(self):
+        ref_type = (
+            reference.Reference
+            if isinstance(self.client, client.Client)
+            else reference.AsyncReference
+        )
         self.references = []
-        for text in self.definition, self.example:
+        for attr in ('definition', 'example'):
+            text = getattr(self, attr)
+
             matches = REFERENCE_REGEX.finditer(text)
             if not matches:
                 continue
+
+            offset = 0
             for match in matches:
-                ref_type = (
-                    reference.Reference
-                    if isinstance(self.client, client.Client)
-                    else reference.AsyncReference
+                term = match.group('ref')
+                self.references += [ref_type(self.client, term)]
+                text = (
+                    text[: match.start() - offset]
+                    + term
+                    + text[match.end() - offset :]
                 )
-                self.references += [ref_type(self.client, match.group('ref'))]
+
+                offset += 2
+
+            setattr(self, attr, text)
 
     def __str__(self):
         return (
