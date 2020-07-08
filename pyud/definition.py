@@ -177,7 +177,7 @@ class Definition:
     def _find_references(self):
         ref_type = (
             reference.Reference
-            if isinstance(self._client, client.Client)
+            if isinstance(self.client, client.Client)
             else reference.AsyncReference
         )
         self.references = []
