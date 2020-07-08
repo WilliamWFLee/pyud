@@ -50,6 +50,12 @@ class Definition:
         The :attr:`current_vote` attribute is not included
         as a required attribute, as it does not contain any meaningful information.
 
+    .. attribute:: client
+
+        The client used to obtain this definition
+
+        :type: Union[Client, AsyncClient]
+
     .. attribute:: references
 
         A list of references to other terms found in the :attr:`definition`
