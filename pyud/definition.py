@@ -50,6 +50,12 @@ class Definition:
         The :attr:`current_vote` attribute is not included
         as a required attribute, as it does not contain any meaningful information.
 
+    .. attribute:: client
+
+        The client used to obtain this definition
+
+        :type: Union[Client, AsyncClient]
+
     .. attribute:: references
 
         A list of references to other terms found in the :attr:`definition`
@@ -143,7 +149,7 @@ class Definition:
         """
         Instantiates an instance of an Urban Dictionary definition
         """
-        self._client = client
+        self.client = client
         self.defid = defid
         self.word = word
         self.definition = definition
@@ -185,7 +191,7 @@ class Definition:
             offset = 0
             for match in matches:
                 term = match.group('ref')
-                self.references += [ref_type(self._client, term)]
+                self.references += [ref_type(self.client, term)]
                 text = (
                     text[: match.start() - offset]
                     + term
