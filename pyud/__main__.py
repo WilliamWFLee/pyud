@@ -23,13 +23,38 @@ import argparse
 
 import pyud
 
-parser = argparse.ArgumentParser(
-    prog='pyud',
-    description="Command-line interface for the Urban Dictionary API",
-)
 
-parser.add_argument(
-    '--version', action='version', version="pyud {}".format(pyud.__version__)
-)
+def define(parser, args):
+    pass
 
-parser.parse_args()
+
+def add_define_args(subparser):
+    parser = subparser.add_parser('define', help="Define a term")
+    parser.set_defaults(func=define)
+
+    parser.add_argument('term')
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        prog='pyud',
+        description="Command-line interface for the Urban Dictionary API",
+    )
+    parser.add_argument(
+        '--version',
+        action='version',
+        version="pyud {}".format(pyud.__version__)
+    )
+
+    subparser = parser.add_subparsers(metavar='subcommand')
+    add_define_args(subparser)
+
+    args = parser.parse_args()
+    return parser, args
+
+
+parser, args = parse_args()
+if hasattr(args, 'func'):
+    args.func(parser, args)
+else:
+    parser.print_help()
