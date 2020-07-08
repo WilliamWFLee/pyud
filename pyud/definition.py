@@ -205,13 +205,13 @@ class Definition:
     def __str__(self):
         return (
             "Definition of {0.word!r} ID={self.defid}: "
-            "'{0.definition[:75]}'"
+            "{0.definition[:75]!r}"
             + ("..." if len(self.definition) > 75 else "")
         ).format(self)
 
     def __repr__(self):
         return (
-            "Definition(client={0._client!r}, defid={0.defid}, "
+            "Definition(client={0.client!r}, defid={0.defid}, "
             "word={0.word!r}, definition={0.definition!r}, "
             "author={0.author!r}, thumbs_up={0.thumbs_up}, "
             "thumbs_down={0.thumbs_down}, example={0.example!r}, "
