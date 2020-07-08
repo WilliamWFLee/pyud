@@ -40,6 +40,8 @@ def parse_args():
         prog='pyud',
         description="Command-line interface for the Urban Dictionary API",
     )
+    parser.set_defaults(func=None)
+
     parser.add_argument(
         '--version',
         action='version',
@@ -54,7 +56,7 @@ def parse_args():
 
 
 parser, args = parse_args()
-if hasattr(args, 'func'):
+if args.func is not None:
     args.func(parser, args)
 else:
     parser.print_help()
