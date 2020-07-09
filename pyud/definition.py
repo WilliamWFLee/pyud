@@ -66,7 +66,7 @@ class Definition:
 
             [This] is enclosed in [square brackets]
 
-        has references to *this* and **square brackets**.
+        has references to *this* and *square brackets*.
         References are extracted to reference objects
 
         The class of the reference objects is :class:`Reference`
