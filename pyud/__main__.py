@@ -27,6 +27,10 @@ import pyud
 
 
 def show_results(definitions: List[pyud.Definition]):
+    if not definitions:
+        print("No definitions were found.")
+        return
+
     showing = True
     index = 0
     while showing:
@@ -78,7 +82,7 @@ def random(parser, args):
 def from_id(parser, args):
     ud = pyud.Client()
     definition = ud.from_id(args.id)
-    show_results([definition])
+    show_results([definition] if definition else None)
 
 
 def add_define_args(subparser):
