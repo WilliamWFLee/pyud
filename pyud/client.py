@@ -96,10 +96,13 @@ class Client(ClientBase):
     def define(
         self, term: str, page: int = 1
     ) -> Optional[List['definition.Definition']]:
-        """Finds definitions for a given term
+        """Finds definitions for a given term from a given page,
+        up to a maximum of 10 definitions.
 
         :param term: The term to find definitions for
         :type term: str
+        :param page: The page of the definitions to return, defaults to 1
+        :type page: int
         :return: A list of definitions or :data:`None` if not found
         :rtype: Optional[List[Definition]]
         """
@@ -152,10 +155,13 @@ class AsyncClient(ClientBase):
     async def define(
         self, term: str, page: int = 1
     ) -> Optional[List['definition.Definition']]:
-        """Finds definitions for a given term asynchronously
+        """Finds definitions for a given term from a given page asynchronously,
+        up to a maximum of 10 definitions.
 
         :param term: The term to find definitions for
         :type term: str
+        :param page: The page of the definitions to return, defaults to 1.
+        :type page: int
         :return: A list of definitions or :data:`None` if not found
         :rtype: Optional[List[Definition]]
         """
