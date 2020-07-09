@@ -29,7 +29,7 @@ import aiohttp
 from . import definition
 
 BASE_URL = "https://api.urbandictionary.com/v0/"
-DEFINE_BY_TERM_URL = BASE_URL + "define?term={}"
+DEFINE_BY_TERM_URL = BASE_URL + "define?term={}&page={}"
 DEFINE_BY_ID_URL = BASE_URL + "define?defid={}"
 RANDOM_URL = BASE_URL + "random"
 
@@ -93,7 +93,9 @@ class Client(ClientBase):
                 response.read().decode('utf-8')
             )
 
-    def define(self, term: str) -> Optional[List['definition.Definition']]:
+    def define(
+        self, term: str, page: int = 1
+    ) -> Optional[List['definition.Definition']]:
         """Finds definitions for a given term
 
         :param term: The term to find definitions for
@@ -102,7 +104,7 @@ class Client(ClientBase):
         :rtype: Optional[List[Definition]]
         """
         return self._fetch_definitions(
-            DEFINE_BY_TERM_URL.format(url_quote(term))
+            DEFINE_BY_TERM_URL.format(url_quote(term), page)
         )
 
     def from_id(self, defid: int) -> Optional['definition.Definition']:
@@ -148,7 +150,7 @@ class AsyncClient(ClientBase):
                 return self._parse_definitions_from_json(await response.text())
 
     async def define(
-        self, term: str
+        self, term: str, page: int = 1
     ) -> Optional[List['definition.Definition']]:
         """Finds definitions for a given term asynchronously
 
@@ -158,7 +160,7 @@ class AsyncClient(ClientBase):
         :rtype: Optional[List[Definition]]
         """
         return await self._fetch_definitions(
-            DEFINE_BY_TERM_URL.format(url_quote(term))
+            DEFINE_BY_TERM_URL.format(url_quote(term), page)
         )
 
     async def from_id(self, defid: int) -> Optional['definition.Definition']:
