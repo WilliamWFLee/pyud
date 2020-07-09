@@ -202,7 +202,7 @@ class AsyncClient(ClientBase):
         self, term: str, limit: Optional[int] = None
     ) -> AsyncGenerator['definition.Definition', None]:
         """Finds definitions for a given term up to a certain number of definitions,
-        returning a generator.
+        returning an asynchronous generator.
 
         :param term: The term to find definitions for
         :type term: str
