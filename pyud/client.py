@@ -20,7 +20,7 @@ along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import json
-from typing import List, Optional, Union
+from typing import AsyncGenerator, Generator, List, Optional, Union
 from urllib import request
 from urllib.parse import quote as url_quote
 
@@ -110,6 +110,35 @@ class Client(ClientBase):
             DEFINE_BY_TERM_URL.format(url_quote(term), page)
         )
 
+    def define_iter(
+        self, term: str, limit: Optional[int] = None
+    ) -> Generator['definition.Definition', None, None]:
+        """Finds definitions for a given term up to a certain number of definitions,
+        returning a generator.
+
+        :param term: The term to find definitions for
+        :type term: str
+        :param limit: The maximum number of definitions to return, defaults to :data:`None`
+        :type limit: Optional[int]
+        :return: A generator of the definitions
+        :rtype: Generator[Definition, None, None]
+        """
+        count = 0
+        page = 1
+        yielding = True
+        while yielding:
+            definitions = self.define(term, page=page)
+            if definitions is None:
+                break
+            for d in definitions:
+                yield d
+                count += 1
+                if limit is not None and count >= limit:
+                    yielding = False
+                    break
+            else:
+                page += 1
+
     def from_id(self, defid: int) -> Optional['definition.Definition']:
         """Finds a definition by ID
 
@@ -168,6 +197,35 @@ class AsyncClient(ClientBase):
         return await self._fetch_definitions(
             DEFINE_BY_TERM_URL.format(url_quote(term), page)
         )
+
+    async def define_iter(
+        self, term: str, limit: Optional[int] = None
+    ) -> AsyncGenerator['definition.Definition', None]:
+        """Finds definitions for a given term up to a certain number of definitions,
+        returning a generator.
+
+        :param term: The term to find definitions for
+        :type term: str
+        :param limit: The maximum number of definitions to return, defaults to :data:`None`
+        :type limit: Optional[int]
+        :return: An asynchronous generator of the definitions
+        :rtype: AsyncGenerator[Definition, None]
+        """
+        count = 0
+        page = 1
+        yielding = True
+        while yielding:
+            definitions = await self.define(term, page=page)
+            if definitions is None:
+                break
+            for d in definitions:
+                yield d
+                count += 1
+                if limit is not None and count >= limit:
+                    yielding = False
+                    break
+            else:
+                page += 1
 
     async def from_id(self, defid: int) -> Optional['definition.Definition']:
         """Finds a definition by ID asynchronously
