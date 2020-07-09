@@ -94,7 +94,7 @@ class Client(ClientBase):
             )
 
     def define(
-        self, term: str, page: int = 1
+        self, term: str, *, page: int = 1
     ) -> Optional[List['definition.Definition']]:
         """Finds definitions for a given term from a given page,
         up to a maximum of 10 definitions.
@@ -153,7 +153,7 @@ class AsyncClient(ClientBase):
                 return self._parse_definitions_from_json(await response.text())
 
     async def define(
-        self, term: str, page: int = 1
+        self, term: str, *, page: int = 1
     ) -> Optional[List['definition.Definition']]:
         """Finds definitions for a given term from a given page asynchronously,
         up to a maximum of 10 definitions.
