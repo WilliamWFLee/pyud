@@ -75,11 +75,24 @@ def random(parser, args):
     show_results(definitions)
 
 
+def from_id(parser, args):
+    ud = pyud.Client()
+    definition = ud.from_id(args.id)
+    show_results([definition])
+
+
 def add_define_args(subparser):
     parser = subparser.add_parser('define', help="Define a term")
     parser.set_defaults(func=define)
 
     parser.add_argument('term')
+
+
+def add_from_id_args(subparser):
+    parser = subparser.add_parser('fromid', help="Fetch a definition by ID")
+    parser.set_defaults(func=from_id)
+
+    parser.add_argument('id', type=int)
 
 
 def add_random_args(subparser):
@@ -103,6 +116,7 @@ def parse_args():
     subparser = parser.add_subparsers(metavar='subcommand')
     add_define_args(subparser)
     add_random_args(subparser)
+    add_from_id_args(subparser)
 
     args = parser.parse_args()
     return parser, args
