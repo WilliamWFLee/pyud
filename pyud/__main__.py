@@ -126,8 +126,9 @@ def parse_args():
     return parser, args
 
 
-parser, args = parse_args()
-if args.func is not None:
-    args.func(parser, args)
-else:
-    parser.print_help()
+if __name__ == '__main__':
+    parser, args = parse_args()
+    if args.func is not None:
+        args.func(parser, args)
+    else:
+        parser.print_help()
