@@ -113,7 +113,7 @@ class Client(ClientBase):
     def define_iter(
         self, term: str, limit: Optional[int] = None
     ) -> Generator['definition.Definition', None, None]:
-        """Finds definitions for a given term up to a certain number of definitions,
+        """Finds definitions for a given term up to an optional limit,
         returning a generator.
 
         :param term: The term to find definitions for
@@ -201,7 +201,7 @@ class AsyncClient(ClientBase):
     async def define_iter(
         self, term: str, limit: Optional[int] = None
     ) -> AsyncGenerator['definition.Definition', None]:
-        """Finds definitions for a given term up to a certain number of definitions,
+        """Finds definitions for a given term up to an optional limit,
         returning an asynchronous generator.
 
         :param term: The term to find definitions for
