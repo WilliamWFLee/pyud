@@ -21,6 +21,8 @@ along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 
 from typing import Optional
 
+from . import definition
+
 
 class AsyncDefinitionGenerator:
     """
@@ -34,3 +36,27 @@ class AsyncDefinitionGenerator:
         self.definition_getter = definition_getter
         self.limit = limit
         self._page = 1
+
+    def __aiter__(self) -> 'AsyncDefinitionGenerator':
+        self._counter = 0
+        self._index = 0
+        self._definitions = []
+
+        return self
+
+    async def __anext__(self) -> 'definition.Definition':
+        if self.limit is not None and self._counter >= self.limit:
+            raise StopAsyncIteration
+        if self._index <= len(self._definitions):
+            self._definitions = await self.definition_getter(page=self._page)
+            self._page += 1
+            self._index = 0
+        if not self._definitions:
+            raise StopAsyncIteration
+
+        definition = self._definitions[self._index]
+
+        self._counter += 1
+        self._index += 1
+
+        return definition
