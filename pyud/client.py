@@ -26,7 +26,7 @@ from urllib.parse import quote as url_quote
 
 import aiohttp
 
-from . import definition
+from . import definition, generator
 
 BASE_URL = "https://api.urbandictionary.com/v0/"
 DEFINE_BY_TERM_URL = BASE_URL + "define?term={}&page={}"
@@ -198,7 +198,7 @@ class AsyncClient(ClientBase):
             DEFINE_BY_TERM_URL.format(url_quote(term), page)
         )
 
-    async def define_iter(
+    def define_iter(
         self, term: str, limit: Optional[int] = None
     ) -> AsyncGenerator['definition.Definition', None]:
         """Finds definitions for a given term up to an optional limit,
@@ -211,21 +211,11 @@ class AsyncClient(ClientBase):
         :return: An asynchronous generator of the definitions
         :rtype: AsyncGenerator[Definition, None]
         """
-        count = 0
-        page = 1
-        yielding = True
-        while yielding:
-            definitions = await self.define(term, page=page)
-            if definitions is None:
-                break
-            for d in definitions:
-                yield d
-                count += 1
-                if limit is not None and count >= limit:
-                    yielding = False
-                    break
-            else:
-                page += 1
+
+        async def definition_getter(*, page: int):
+            await self.define(term, page=page)
+
+        return generator.AsyncDefinitionGenerator(definition_getter, limit)
 
     async def from_id(self, defid: int) -> Optional['definition.Definition']:
         """Finds a definition by ID asynchronously

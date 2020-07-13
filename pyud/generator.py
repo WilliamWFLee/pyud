@@ -18,3 +18,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with pyud.  If not, see <https://www.gnu.org/licenses/>.
 """
+
+from typing import Optional
+
+
+class AsyncDefinitionGenerator:
+    """
+    An asynchronous generator for definitions.
+    For compatibility with Python 3.5.
+    """
+
+    def __init__(
+        self, definition_getter, limit: Optional[int] = None,
+    ):
+        self.definition_getter = definition_getter
+        self.limit = limit
+        self._page = 1
